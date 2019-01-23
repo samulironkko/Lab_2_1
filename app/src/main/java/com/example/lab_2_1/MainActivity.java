@@ -1,5 +1,7 @@
 package com.example.lab_2_1;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -69,7 +71,16 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         super.onOptionsItemSelected(item);
 
         if (item.getItemId() == R.id.edit_menu_item) {
-
+            Intent editViewIntent = new Intent(this, EditActivity.class);
+            String nimi = "Seppo Taalasmaa";
+            editViewIntent.putExtra("user_name", nimi);
+            startActivity(editViewIntent);
+        }
+        else if (item.getItemId() == R.id.settings_menu_item) {
+            String url = "https://www.hs.fi/";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
         }
 
         return true;
